@@ -1,0 +1,13 @@
+<ion-header no-border>
+  <ion-toolbar color="dark">
+    <ion-title>Menu</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content color="dark">
+ <app-components-items [items]="items"></app-components-items>
+ <!-- <ion-button routerLink="/information" size="large">Siguiente</ion-button> -->
+ <ion-button (click)="goUserInformation()">
+   Siguiente
+ </ion-button>
+</ion-content >
+

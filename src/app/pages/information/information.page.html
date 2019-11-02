@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>information</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating"
+      >Ingrese Su Nombre <ion-text color="danger">*</ion-text>
+    </ion-label>
+    <ion-input type="text" clearInput required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating"
+      >Ingrese Su Apellido <ion-text color="danger">*</ion-text>
+    </ion-label>
+    <ion-input type="text" clearInput></ion-input>
+  </ion-item>
+  <ion-item>
+      <ion-label position="floating"
+        >Ingrese Su Email <ion-text color="danger">*</ion-text>
+      </ion-label>
+      <ion-input type="email" clearInput></ion-input>
+    </ion-item>
+  <ion-item>
+    <ion-label position="floating"
+      >Ingrese Su Cedula <ion-text color="danger">*</ion-text>
+    </ion-label>
+    <ion-input type="number" clearInput></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Ingrese Su fecha de Nacimiento </ion-label>
+    <ion-datetime
+      displayFormat="MMM D, YYYY"
+      min="1970"
+      max="2001"
+      value="2008-09-02"
+    ></ion-datetime>
+  </ion-item>
+
+  <ion-button routerLink="/payment" size="large">Siguiente</ion-button>
+</ion-content>
