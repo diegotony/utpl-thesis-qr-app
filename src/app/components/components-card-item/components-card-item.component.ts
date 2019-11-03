@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, TemplateRef } from "@angular/core";
 import { Item } from "src/app/interfaces/item";
+import { ToastController } from '@ionic/angular';
 
 import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
 
@@ -11,7 +12,7 @@ import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
 export class ComponentsCardItemComponent implements OnInit {
   modalRef: BsModalRef;
   @Input() item: Item;
-  constructor(private modalService: BsModalService) {}
+  constructor(private modalService: BsModalService, public toastController: ToastController) {}
   numbers: [];
   quantity;
   items = [];
@@ -26,9 +27,20 @@ export class ComponentsCardItemComponent implements OnInit {
   }
 
   add(price,name) {
-    let choice = {name,price,quantity:this.quantity}
+    const choice = {name,price,quantity:this.quantity}
     this.items.push(choice)
     console.log(this.items)
+    this.presentToast()
 
   }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Your Item have been saved.',
+      duration: 2000
+    });
+    toast.present();
+  }
+
+  
 }

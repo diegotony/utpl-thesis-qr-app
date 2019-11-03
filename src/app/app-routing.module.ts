@@ -7,9 +7,10 @@ const routes: Routes = [
   { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule' },
   { path: 'orders', loadChildren: './pages/orders/orders.module#OrdersPageModule' },
   { path: 'menu', loadChildren: './pages/menu/menu.module#MenuPageModule' },
-  { path: 'payment', loadChildren: './pages/payment/payment.module#PaymentPageModule' },
-  { path: 'information', loadChildren: './pages/information/information.module#InformationPageModule' },
+  { path: 'payment/:info', loadChildren: './pages/payment/payment.module#PaymentPageModule' },
+  { path: 'information/:data', loadChildren: './pages/information/information.module#InformationPageModule' },
   { path: 'modal', loadChildren: './pages/modal/modal.module#ModalPageModule' },
+
 ];
 
 

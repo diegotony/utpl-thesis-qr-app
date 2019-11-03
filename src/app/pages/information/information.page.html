@@ -1,11 +1,12 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>information</ion-title>
+    <ion-title>Information</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-item>
+<ion-list>
+    <ion-item>
     <ion-label position="floating"
       >Ingrese Su Nombre <ion-text color="danger">*</ion-text>
     </ion-label>
@@ -30,6 +31,12 @@
     </ion-label>
     <ion-input type="number" clearInput></ion-input>
   </ion-item>
+  <ion-item>
+    <ion-label position="floating"
+      >Ingrese Su Direccion <ion-text color="danger">*</ion-text>
+    </ion-label>
+    <ion-input type="text" clearInput></ion-input>
+  </ion-item>
 
   <ion-item>
     <ion-label>Ingrese Su fecha de Nacimiento </ion-label>
@@ -37,9 +44,17 @@
       displayFormat="MMM D, YYYY"
       min="1970"
       max="2001"
-      value="2008-09-02"
+      value="1990-09-02"
     ></ion-datetime>
   </ion-item>
+<ion-item>
+  <ion-label>Desea recibir su factura ?</ion-label>
+  <ion-checkbox ></ion-checkbox>
 
-  <ion-button routerLink="/payment" size="large">Siguiente</ion-button>
+</ion-item>
+</ion-list>
+
+<ion-button (click)="goPayment()">
+  Siguiente
+</ion-button>
 </ion-content>
