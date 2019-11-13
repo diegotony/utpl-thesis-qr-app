@@ -17,12 +17,14 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { AlertModule } from 'ngx-bootstrap/alert'
 import { FormsModule } from '@angular/forms';
+import { PayPal } from '@ionic-native/paypal/ngx';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [FormsModule,BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, BrowserAnimationsModule, ModalModule.forRoot(), ButtonsModule.forRoot(), AlertModule.forRoot()],
   providers: [
+    PayPal,
     StatusBar,
     SplashScreen,
     BarcodeScanner,

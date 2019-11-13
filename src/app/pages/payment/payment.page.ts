@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
+import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
 
 @Component({
   selector: "app-payment",
@@ -9,7 +10,9 @@ import { Router, ActivatedRoute } from "@angular/router";
 export class PaymentPage implements OnInit {
 
   data:Object;
-  constructor(public activatedRoute: ActivatedRoute, public router: Router) {}
+  constructor(private payPal: PayPal,public activatedRoute: ActivatedRoute, public router: Router) {
+   
+  }
 
   ngOnInit() {
     let dataRec = this.activatedRoute.snapshot.paramMap.get("info");
@@ -18,4 +21,5 @@ export class PaymentPage implements OnInit {
     console.log("dsddd  ",this.data);
 
   }
+
 }

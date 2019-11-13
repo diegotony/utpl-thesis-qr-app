@@ -1,12 +1,11 @@
 import { Component, OnInit, TemplateRef } from "@angular/core";
 import { OrderService } from "src/app/services/order.service";
 import { Item } from "../../interfaces/item";
-import { InformationPage } from "../information/information.page";
-import { NavController } from "@ionic/angular";
+
 import { ToastController } from "@ionic/angular";
 import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
 import { Router } from "@angular/router";
-import { NavextrasService } from "src/app/services/navextras.service";
+import { Observable } from "rxjs";
 @Component({
   selector: "app-menu",
   templateUrl: "./menu.page.html",
@@ -30,7 +29,10 @@ export class MenuPage implements OnInit {
     this.orderServiece.getItems().subscribe(response => {
       this.items = response;
     });
+    // this.check()
+
   }
+
 
   goUserInformation() {
     console.log(this.myitems);

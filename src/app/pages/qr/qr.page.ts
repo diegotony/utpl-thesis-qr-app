@@ -3,33 +3,53 @@ import { Component, OnInit } from '@angular/core';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { NavController } from '@ionic/angular';
 import { OrdersPage } from '../orders/orders.page';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-qr',
   templateUrl: './qr.page.html',
   styleUrls: ['./qr.page.scss'],
 })
-export class QrPage  {
+export class QrPage {
 
-  data;
+  scannedData: {};
+  ordercheck;
   // constructor(private zbar: ZBar) { }
-  constructor(private barcodeScanner: BarcodeScanner, private navCtrl: NavController) { }
-  scanQr(){
-    this.barcodeScanner.scan().then(barcodeData => {
-      console.log('Barcode data', barcodeData.text);
-      this.data= barcodeData.text;
-      this.pushPage()
-     }).catch(err => {
-         console.log('Error', err);
-     });
+  constructor(private barcodeScanner: BarcodeScanner, private navCtrl: NavController, public orderService: OrderService) { }
+
+  scanQr() {
+  
+      this.barcodeScanner.scan().then(barcodeData => {
+        this.scannedData = barcodeData;
+        this.checkCode(this.scannedData);
+
+
+      }).catch(err => {
+        console.error('Error', err);
+      });
+
   }
 
-  pushPage(){
-    this.navCtrl.navigateForward(['menu'],{queryParams:this.data})
-    console.log(this.data)
+
+  
+  checkCode(data){
+    console.log("checek")
+    console.log(data.text)
+    this.orderService.checkTable(data.text).subscribe(data=>{
+      console.log("NTES",data)
+      if(data.status === "ok"){
+        console.log("Important   =>",data.status)
+        this.pushPage()
+      }else{
+        console.log("upps")
+      }
+    })
+  }
+  pushPage() {
+    this.navCtrl.navigateForward(['menu'],{queryParams:this.ordercheck})
   };
 
 }
 
- 
+
 
