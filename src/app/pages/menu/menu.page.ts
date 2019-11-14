@@ -18,9 +18,10 @@ export class MenuPage implements OnInit {
   items: any;
   numbers: [];
   quantity;
-  public myitems = [];
+  myitems = [];
   choice: Item;
   data: any;
+  order:any;
 
   constructor(
     private modalService: BsModalService,
@@ -35,23 +36,14 @@ export class MenuPage implements OnInit {
     this.orderServiece.getItems().subscribe(response => {
       this.items = response;
     });
-    // let dataRec = 
-    // this.activatedRoute.snapshot.paramMap.get('mesa');
-    // this.data = dataRec
+
     this.data = this.navExtras.getExtras()
-
-
-
-
-    console.log("menu",this.data);
-
   }
 
 
   goUserInformation() {
-    console.log(this.myitems);
-    let jsonData = JSON.stringify(this.myitems);
-    this.router.navigate(["information", jsonData]);
+    this.navExtras.setExtras({"id_table":this.data, "items":this.myitems})
+    this.router.navigateByUrl("information");
 
     // this.navCtrl.navigateForward(["information"]);
   }
@@ -63,7 +55,6 @@ export class MenuPage implements OnInit {
   add(price, name) {
     const choice = { name, price, quantity: this.quantity };
     this.myitems.push(choice);
-    console.log(this.myitems);
     this.presentToast();
   }
 

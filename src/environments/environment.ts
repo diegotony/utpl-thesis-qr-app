@@ -1,7 +1,7 @@
 
 export const environment = {
   production: false,
-  SERVICE_ORDER:"http://82b76c8c.ngrok.io",
+  SERVICE_ORDER:" http://aaf02c68.ngrok.io",
 };
 
 /*

@@ -17,7 +17,8 @@ export class QrPage {
   ordercheck;
   toast: any;
   table: any;
-  // constructor(private zbar: ZBar) { }
+
+  
   constructor(public toastController: ToastController,
     private barcodeScanner: BarcodeScanner,
     private navCtrl: NavController,
@@ -49,6 +50,7 @@ export class QrPage {
       }
     })
   }
+
   pushPage() {
     // this.navCtrl.navigateForward(['menu'], { queryParams: this.ordercheck })
     console.log(this.table);
@@ -65,10 +67,10 @@ export class QrPage {
       toastData.present();
     });
   }
+
   HideToast() {
     this.toast = this.toastController.dismiss();
   }
-
 }
 
 
