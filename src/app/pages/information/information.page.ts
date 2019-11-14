@@ -15,7 +15,7 @@ export class InformationPage implements OnInit {
   }
 
   ngOnInit() {
-    let dataRec = this.activatedRoute.snapshot.paramMap.get('data')
+    let dataRec = this.activatedRoute.snapshot.paramMap.get('id_data')
     this.data = dataRec
     console.log(dataRec)
   }

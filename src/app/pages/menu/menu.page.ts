@@ -4,32 +4,46 @@ import { Item } from "../../interfaces/item";
 
 import { ToastController } from "@ionic/angular";
 import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { Observable } from "rxjs";
+import { ExtrasService } from 'src/app/services/extras.service';
 @Component({
   selector: "app-menu",
   templateUrl: "./menu.page.html",
   styleUrls: ["./menu.page.scss"]
 })
 export class MenuPage implements OnInit {
+  
   modalRef: BsModalRef;
   items: any;
   numbers: [];
   quantity;
   public myitems = [];
   choice: Item;
+  data: any;
+
   constructor(
     private modalService: BsModalService,
     public toastController: ToastController,
     private orderServiece: OrderService,
-    public router: Router
-  ) {}
+    public router: Router,
+    public activatedRoute: ActivatedRoute,
+    public navExtras: ExtrasService
+  ) { }
 
   ngOnInit() {
     this.orderServiece.getItems().subscribe(response => {
       this.items = response;
     });
-    // this.check()
+    // let dataRec = 
+    // this.activatedRoute.snapshot.paramMap.get('mesa');
+    // this.data = dataRec
+    this.data = this.navExtras.getExtras()
+
+
+
+
+    console.log("menu",this.data);
 
   }
 
