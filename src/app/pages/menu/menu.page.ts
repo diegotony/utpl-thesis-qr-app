@@ -43,7 +43,7 @@ export class MenuPage implements OnInit {
 
   goUserInformation() {
     this.navExtras.setExtras({"id_table":this.data, "items":this.myitems})
-    this.router.navigateByUrl("information");
+    this.router.navigate(["users"]);
 
     // this.navCtrl.navigateForward(["information"]);
   }

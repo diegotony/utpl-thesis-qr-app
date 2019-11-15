@@ -14,4 +14,8 @@ export class OrderService {
   checkTable(data){
     return this.http.get<any>(`${environment.SERVICE_ORDER}/table/check/${data}`)
   }
+  checkUser(data){
+    return this.http.get<any>(`${environment.SERVICE_ORDER}/table/check/${data}`)
+  }
+
 }

@@ -10,6 +10,8 @@ const routes: Routes = [
   { path: 'payment/:info', loadChildren: './pages/payment/payment.module#PaymentPageModule' },
   { path: 'information', loadChildren: './pages/information/information.module#InformationPageModule' },
   { path: 'modal', loadChildren: './pages/modal/modal.module#ModalPageModule' },
+  { path: 'users', loadChildren: './pages/users/users.module#UsersPageModule' },
+  { path: 'check-users', loadChildren: './pages/check-users/check-users.module#CheckUsersPageModule' },
 
 ];
 

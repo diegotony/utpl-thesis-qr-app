@@ -5,56 +5,36 @@
 </ion-header>
 
 <ion-content>
-<ion-list>
+  <form #form="ngForm" (ngSubmit)="register(form)">
     <ion-item>
-    <ion-label position="floating"
-      >Ingrese Su Nombre <ion-text color="danger">*</ion-text>
-    </ion-label>
-    <ion-input type="text" clearInput required></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label position="floating"
-      >Ingrese Su Apellido <ion-text color="danger">*</ion-text>
-    </ion-label>
-    <ion-input type="text" clearInput></ion-input>
-  </ion-item>
-  <ion-item>
-      <ion-label position="floating"
-        >Ingrese Su Email <ion-text color="danger">*</ion-text>
-      </ion-label>
-      <ion-input type="email" clearInput></ion-input>
+      <ion-input name="name" type="text" placeholder="Ingresa tu nombre" ngModel required></ion-input>
     </ion-item>
-  <ion-item>
-    <ion-label position="floating"
-      >Ingrese Su Cedula <ion-text color="danger">*</ion-text>
-    </ion-label>
-    <ion-input type="number" clearInput></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating"
-      >Ingrese Su Direccion <ion-text color="danger">*</ion-text>
-    </ion-label>
-    <ion-input type="text" clearInput></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-input name="last_name" type="text" placeholder="Ingrese tu apellido" ngModel required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input name="email" type="email" placeholder="Tu email" ngModel required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" name="address" placeholder="Ingrese Su Direccion" ngModel required></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="floating">Ingrese Su Cedula <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input type="number" name="dni" ngModel required></ion-input>
+      </ion-item>
+    <ion-item>
+      <ion-label>Ingrese Su fecha de Nacimiento </ion-label>
 
-  <ion-item>
-    <ion-label>Ingrese Su fecha de Nacimiento </ion-label>
-    <ion-datetime
-      displayFormat="MMM D, YYYY"
-      min="1970"
-      max="2001"
-      value="1990-09-02"
-    ></ion-datetime>
-  </ion-item>
-<ion-item>
-  <ion-label>Desea recibir su factura ?</ion-label>
-  <ion-checkbox ></ion-checkbox>
+      <ion-datetime name="date" displayFormat="MMM D, YYYY" min="1970" max="2001" value="1990-09-02" ngModel required>
+      </ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Desea recibir su factura ?</ion-label>
+      <ion-checkbox name="billing" ngModel required></ion-checkbox>
 
-</ion-item>
-</ion-list>
+    </ion-item>
 
-<ion-button (click)="goPayment()">
-  Siguiente
-</ion-button>
+    <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Crear Orden</ion-button>
+  </form>
 </ion-content>

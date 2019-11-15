@@ -9,7 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ZBar, ZBarOptions } from '@ionic-native/zbar/ngx';
+import { ZBar} from '@ionic-native/zbar/ngx';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { HttpClientModule, HttpClient} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
