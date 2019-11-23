@@ -9,13 +9,13 @@ export class OrderService {
 
   constructor(private http: HttpClient) { }
   getItems(){
-    return this.http.get<Item>(`${environment.SERVICE_ORDER}/item`)
+    return this.http.get<Item>(`${environment.URL}/api-order/item`)
   }
   checkTable(data){
-    return this.http.get<any>(`${environment.SERVICE_ORDER}/table/check/${data}`)
+    return this.http.get<any>(`${environment.URL}/api-order/table/check/${data}`)
   }
   checkUser(data){
-    return this.http.get<any>(`${environment.SERVICE_ORDER}/table/check/${data}`)
+    return this.http.get<any>(`${environment.URL}/api-client/users/check/${data}`)
   }
 
 }

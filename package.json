@@ -41,6 +41,7 @@
     "core-js": "^2.5.4",
     "ionic-native": "^2.9.0",
     "ngx-bootstrap": "^5.2.0",
+    "ngx-paypal": "^5.0.0",
     "phonegap-plugin-barcodescanner": "^8.1.0",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",

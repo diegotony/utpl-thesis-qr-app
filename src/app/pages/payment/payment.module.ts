@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 
 import { PaymentPage } from './payment.page';
 
+import { NgxPayPalModule } from 'ngx-paypal';
+
 const routes: Routes = [
   {
     path: '',
@@ -19,7 +21,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    NgxPayPalModule
   ],
   declarations: [PaymentPage]
 })
