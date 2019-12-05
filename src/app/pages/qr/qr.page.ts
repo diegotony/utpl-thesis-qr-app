@@ -55,7 +55,7 @@ export class QrPage {
   pushPage() {
     // this.navCtrl.navigateForward(['menu'], { queryParams: this.ordercheck })
     console.log(this.table);
-    this.navExtras.setExtras(this.table)
+    this.navExtras.setTable(this.table)
     this.nav.navigateForward("tabs/init")
   };
 

@@ -5,5 +5,32 @@
 </ion-header>
 
 <ion-content>
-{{order|json}}
+  <ion-list>
+    <ion-card *ngFor="let item of order">
+
+        <ion-card-header>
+            <ion-card-title><strong>Item:</strong> {{ item.item }}</ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content>
+              <strong>Precio:</strong>$ {{item.price}}.00 
+              <hr>
+              <strong>Cantidad:</strong> {{item.quantity}}
+              <hr>
+              <strong>Subtotal:</strong> ${{item.amount}}.00
+          </ion-card-content>
+          <ion-button (click)="delete(item)" color="danger" expand="full">Delete</ion-button>
+    </ion-card>
+
+  </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" >
+      <ion-fab-button>
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list side="start">
+          <ion-button  (click)="createOrder()">Crear Orden</ion-button>
+        </ion-fab-list>
+    </ion-fab>
+  
+
 </ion-content>

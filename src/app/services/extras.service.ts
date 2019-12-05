@@ -10,6 +10,8 @@ export class ExtrasService {
   order:any;
   qr :any = true;
   id_table:any;
+  id_client:any;
+
   constructor() { }
 
   public setExtras(data) {
@@ -29,15 +31,6 @@ export class ExtrasService {
   }
 
 
-  public setQr(data) {
-    this.qr = data;
-  }
-
-  public getQr() {
-    return this.qr;
-  }
-
-
   public setTable(data) {
     this.id_table = data;
   }
@@ -45,4 +38,13 @@ export class ExtrasService {
   public getTable() {
     return this.id_table;
   }
+
+  public setClient(data) {
+    this.id_client = data;
+  }
+
+  public getClient() {
+    return this.id_client;
+  }
+  
 }
