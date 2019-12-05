@@ -9,9 +9,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ZBar} from '@ionic-native/zbar/ngx';
+import { ZBar } from '@ionic-native/zbar/ngx';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
-import { HttpClientModule, HttpClient} from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
@@ -22,7 +22,17 @@ import { NgxPayPalModule } from 'ngx-paypal';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [FormsModule,BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, BrowserAnimationsModule, ModalModule.forRoot(), ButtonsModule.forRoot(), AlertModule.forRoot(),NgxPayPalModule],
+  imports: [
+    FormsModule, 
+    BrowserModule, 
+    IonicModule.forRoot(), 
+    AppRoutingModule, 
+    HttpClientModule, 
+    BrowserAnimationsModule, 
+    ModalModule.forRoot(), 
+    ButtonsModule.forRoot(), 
+    AlertModule.forRoot(), 
+    NgxPayPalModule],
   providers: [
     PayPal,
     StatusBar,
@@ -33,4 +43,4 @@ import { NgxPayPalModule } from 'ngx-paypal';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

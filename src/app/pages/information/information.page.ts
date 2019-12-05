@@ -30,7 +30,6 @@ export class InformationPage implements OnInit {
 
   }
 
-
   register(form) {
     console.log(form.value)
     console.log(this.data)

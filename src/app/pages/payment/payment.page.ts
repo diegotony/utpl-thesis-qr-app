@@ -25,7 +25,7 @@ export class PaymentPage implements AfterViewChecked {
     env: 'sandbox',
     commit: true,
     payment: (data, actions) => {
-      return actions.request.post(' http://c264a2cf.ngrok.io/create-payment', {
+      return actions.request.post('http://c264a2cf.ngrok.io/create-payment', {
         total: "5.3",
         order_id: "id_order",
         client_id: "fdfas",

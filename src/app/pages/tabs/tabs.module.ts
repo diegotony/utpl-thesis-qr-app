@@ -10,7 +10,18 @@ import { TabsPage } from './tabs.page';
 const routes: Routes = [
   {
     path: '',
-    component: TabsPage
+    component: TabsPage,
+    children:[
+      {path:'menu', loadChildren: '../menu/menu.module#MenuPageModule'},
+      {path:'carrito', loadChildren: '../carrito/carrito.module#CarritoPageModule'},
+      {path:'orders', loadChildren: '../orders/orders.module#OrdersPageModule'},
+
+    ]
+  },
+  {
+    path:'init',
+    redirectTo:'/tabs/menu',
+    pathMatch:'full'
   }
 ];
 
@@ -19,7 +30,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+
   ],
   declarations: [TabsPage]
 })

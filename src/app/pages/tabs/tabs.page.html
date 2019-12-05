@@ -1,9 +1,23 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>tabs</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+
+<ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="menu" id="showMenu">
+        <ion-icon name="alert"></ion-icon>
+        <ion-label>Menu</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="carrito">
+        <ion-icon name="albums"></ion-icon>
+        <ion-label>Carrito</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="orders">
+        <ion-icon name="alert"></ion-icon>
+        <ion-label>Ordenes</ion-label>
+      </ion-tab-button>
+  
+    </ion-tab-bar>
+  </ion-tabs>
 
 </ion-content>

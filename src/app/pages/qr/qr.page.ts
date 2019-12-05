@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 // import { ZBar, ZBarOptions } from '@ionic-native/zbar/ngx';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { NavController } from '@ionic/angular';
@@ -6,6 +6,8 @@ import { OrderService } from 'src/app/services/order.service';
 import { ToastController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ExtrasService } from 'src/app/services/extras.service';
+import { TabsPage } from '../tabs/tabs.page';
+
 @Component({
   selector: 'app-qr',
   templateUrl: './qr.page.html',
@@ -17,15 +19,13 @@ export class QrPage {
   ordercheck;
   toast: any;
   table: any;
-
-  
   constructor(public toastController: ToastController,
     private barcodeScanner: BarcodeScanner,
-    private navCtrl: NavController,
     public router: Router,
     public orderService: OrderService,
     public activatedRoute: ActivatedRoute,
-    public navExtras: ExtrasService) { }
+    public navExtras: ExtrasService,
+    public nav: NavController) { }
 
   scanQr() {
     this.barcodeScanner.scan().then(barcodeData => {
@@ -44,6 +44,7 @@ export class QrPage {
       console.log("NTES", data)
       if (data.status === "ok") {
         this.pushPage();
+
       } else {
         console.log("upps")
         this.showToast();
@@ -55,7 +56,7 @@ export class QrPage {
     // this.navCtrl.navigateForward(['menu'], { queryParams: this.ordercheck })
     console.log(this.table);
     this.navExtras.setExtras(this.table)
-    this.router.navigateByUrl("menu");
+    this.nav.navigateForward("tabs/init")
   };
 
   showToast() {
