@@ -2,8 +2,10 @@
 export const environment = {
   production: false,
   // URL:"http://localhost:3037",
-  URL:"http://995d09ae.ngrok.io",
-  URL_USERS:"http://localhost:3011",
+  URL:"http://7ef85d77.ngrok.io/order",
+  URL_USERS:"http://7ef85d77.ngrok.io/client",
+  URL_PAY:"http://7ef85d77.ngrok.io/fee",
+
 
 };
 

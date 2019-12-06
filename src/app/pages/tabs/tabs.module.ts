@@ -9,7 +9,7 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'tabs',
     component: TabsPage,
     children:[
       {path:'menu', loadChildren: '../menu/menu.module#MenuPageModule'},
@@ -20,7 +20,7 @@ const routes: Routes = [
   },
   {
     path:'init',
-    redirectTo:'/tabs/menu',
+    redirectTo:'/tabs/tabs/menu',
     pathMatch:'full'
   }
 ];

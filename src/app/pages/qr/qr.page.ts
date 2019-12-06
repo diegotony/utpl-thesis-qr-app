@@ -56,7 +56,7 @@ export class QrPage {
     // this.navCtrl.navigateForward(['menu'], { queryParams: this.ordercheck })
     console.log(this.table);
     this.navExtras.setTable(this.table)
-    this.nav.navigateForward("tabs/init")
+    this.nav.navigateForward("/tabs/init")
   };
 
   showToast() {
@@ -68,6 +68,7 @@ export class QrPage {
       toastData.present();
     });
   }
+
 
   HideToast() {
     this.toast = this.toastController.dismiss();

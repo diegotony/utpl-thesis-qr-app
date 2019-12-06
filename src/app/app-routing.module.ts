@@ -3,9 +3,9 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   // { path: '', redirectTo: 'tabs', pathMatch: 'full' },
-  // { path: '', redirectTo: 'qr', pathMatch: 'full' },
+  { path: '', redirectTo: 'qr', pathMatch: 'full' },
   // { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule' },
-  { path: '', loadChildren: './pages/tabs/tabs.module#TabsPageModule', },
+  { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule', },
   { path: 'qr', loadChildren: './pages/qr/qr.module#QrPageModule' },
   { path: 'orders', loadChildren: './pages/orders/orders.module#OrdersPageModule' },
   { path: 'menu', loadChildren: './pages/menu/menu.module#MenuPageModule' },

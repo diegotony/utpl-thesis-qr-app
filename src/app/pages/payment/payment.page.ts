@@ -1,6 +1,9 @@
 import { Component, OnInit, AfterViewChecked } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
+import { ExtrasService } from 'src/app/services/extras.service';
+import { environment } from 'src/environments/environment';
+import { NavController } from '@ionic/angular';
 
 declare let paypal: any;
 
@@ -12,7 +15,7 @@ declare let paypal: any;
 export class PaymentPage implements AfterViewChecked {
 
   data: Object;
-  constructor(private payPal: PayPal, public activatedRoute: ActivatedRoute, public router: Router) {
+  constructor(private payPal: PayPal, public activatedRoute: ActivatedRoute, public router: Router,private navExtras: ExtrasService, public nav: NavController) {
 
   }
 
@@ -25,10 +28,11 @@ export class PaymentPage implements AfterViewChecked {
     env: 'sandbox',
     commit: true,
     payment: (data, actions) => {
-      return actions.request.post('http://c264a2cf.ngrok.io/create-payment', {
-        total: "5.3",
-        order_id: "id_order",
-        client_id: "fdfas",
+      return actions.request.post(environment.URL_PAY+'/paypal/create', {
+        total: this.navExtras.getTotal(),
+        id_order: this.navExtras.getIdOrder(),
+        id_client: this.navExtras.getClient(),
+        payType:"Paypal"
       })
         .then(function (res) {
           // 3. Return res.id from the response
@@ -36,13 +40,13 @@ export class PaymentPage implements AfterViewChecked {
         });
     },
     onAuthorize: (data, actions) => {
-      return actions.request.post(' http://c264a2cf.ngrok.io/execute', {
+      return actions.request.post(environment.URL_PAY+'/paypal/execute', {
         paymentID: data.paymentID,
         payerID: data.payerID,
         ID: data.ID
       })
-        .then(function (res) {
-          console.log(data)
+        .then((res) => {
+          this.nav.navigateForward("qr")
         });
     }
 

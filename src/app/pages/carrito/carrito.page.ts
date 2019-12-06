@@ -25,6 +25,11 @@ async delete(item){
   this.order.splice(this.order.indexOf(item),1)
 }
 async createOrder(){
+  // for (let index = 0; index < this.order.length; index++) {
+  //   const element = this.order[index];
+  //   console.log(element.amount)
+    
+  // }
   this.nav.navigateForward("users")
 }
 

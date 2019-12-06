@@ -13,3 +13,4 @@ export class ChoicePaymentPage implements OnInit {
   }
 
 }
+

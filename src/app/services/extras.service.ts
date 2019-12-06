@@ -11,6 +11,9 @@ export class ExtrasService {
   qr :any = true;
   id_table:any;
   id_client:any;
+  id_order:any;
+  total:any;
+
 
   constructor() { }
 
@@ -45,6 +48,22 @@ export class ExtrasService {
 
   public getClient() {
     return this.id_client;
+  }
+
+  public setTotal(data) {
+    this.total = data;
+  }
+
+  public getTotal() {
+    return this.total;
+  }
+
+  public setIdOrder(data) {
+    this.id_order = data;
+  }
+
+  public getIdOrder() {
+    return this.id_order;
   }
   
 }

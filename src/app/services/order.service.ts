@@ -15,7 +15,12 @@ export class OrderService {
     return this.http.get<any>(`${environment.URL}/table/check/${data}`)
   }
   checkUser(data){
-    return this.http.get<any>(`${environment.URL_USERS}/dni/${data}`)
+
+    return this.http.get<any>(`${environment.URL_USERS}/dni/${data}`, { headers: {'Content-Type': 'application/json'} })
   }
+  createOrder(data){
+    return this.http.post<any>(`${environment.URL}/decree`,{"id_table":data.id_table,"order":data.order,"id_user":data.id_user,"total":data.total})
+  }
+
 
 }
