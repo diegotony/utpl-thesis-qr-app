@@ -11,20 +11,11 @@ import { NavController } from '@ionic/angular';
   styleUrls: ["./information.page.scss"]
 })
 export class InformationPage implements OnInit {
-  data: any; 
+  data: any;
   myForm;
-  private todo : FormGroup;
-
-  validation_messages = {
-    'name': [
-        { type: 'required', message: 'Username is required.' },
-        // { type: 'minlength', message: 'Username must be at least 5 characters long.' },
-        // { type: 'maxlength', message: 'Username cannot be more than 25 characters long.' },
-        // { type: 'pattern', message: 'Your username must contain only numbers and letters.' },
-        // { type: 'validUsername', message: 'Your username has already been taken.' }
-      ],
-
-    }
+  private todo: FormGroup;
+  order = []
+  amount = 0
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -36,10 +27,10 @@ export class InformationPage implements OnInit {
   ) {
     this.todo = this.formBuilder.group({
       firstName: ['', Validators.required],
-      lastName: ['',Validators.required],
-      email:['',Validators.email],
-      address:['',Validators.required],
-      dni:['' ,Validators.compose([Validators.maxLength(10), Validators.minLength(10)])]
+      lastName: ['', Validators.required],
+      email: ['', Validators.email],
+      address: ['', Validators.required],
+      dni: ['', Validators.compose([Validators.maxLength(10), Validators.minLength(10)])]
 
     });
 
@@ -54,15 +45,34 @@ export class InformationPage implements OnInit {
 
   }
 
-  logForm(){
+  logForm() {
     console.log(this.todo.value)
     this.orderService.createUser(this.todo.value)
-    .subscribe((data)=>{
-      console.log(data)
-      this.navExtras.setClient(data._id)
-      this.nav.navigateForward("payment")
-      // console.log(this.navExtras.getClient())
-    })
+      .subscribe((data) => {
+        this.navExtras.setClient(data._id)
+        this.order = this.navExtras.getOrder()
+        this.order.forEach((value) => {
+          this.amount = this.amount + value.amount
+        })
+
+        let client = this.navExtras.getClient()
+        let order = this.navExtras.getOrder()
+        let table = this.navExtras.getTable()
+        let total = this.amount
+        this.orderService.createOrder({
+          "id_client": client,
+          "id_table": table,
+          "order": order,
+          "pago": "Pendiente",
+          "total": total
+        }).subscribe((data) => {
+          this.navExtras.setTotal(total)
+          this.navExtras.setIdOrder(data._id)
+          console.log(data['_id'])
+          this.nav.navigateForward("payment")
+        })
+
+      })
   }
 
 

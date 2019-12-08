@@ -15,7 +15,7 @@ declare let paypal: any;
 export class PaymentPage implements AfterViewChecked {
 
   data: Object;
-  constructor(private payPal: PayPal, public activatedRoute: ActivatedRoute, public router: Router,private navExtras: ExtrasService, public nav: NavController) {
+  constructor(private payPal: PayPal, public activatedRoute: ActivatedRoute, public router: Router, private navExtras: ExtrasService, public nav: NavController) {
 
   }
 
@@ -28,11 +28,11 @@ export class PaymentPage implements AfterViewChecked {
     env: 'sandbox',
     commit: true,
     payment: (data, actions) => {
-      return actions.request.post(environment.URL_PAY+'/paypal/create', {
+      return actions.request.post(environment.URL_BASE + "/" + environment.URL_PAY + '/paypal/create', {
         total: this.navExtras.getTotal(),
         id_order: this.navExtras.getIdOrder(),
         id_client: this.navExtras.getClient(),
-        payType:"Paypal"
+        payType: "Paypal"
       })
         .then(function (res) {
           // 3. Return res.id from the response
@@ -40,7 +40,7 @@ export class PaymentPage implements AfterViewChecked {
         });
     },
     onAuthorize: (data, actions) => {
-      return actions.request.post(environment.URL_PAY+'/paypal/execute', {
+      return actions.request.post(environment.URL_BASE + "/" + environment.URL_PAY + '/paypal/execute', {
         paymentID: data.paymentID,
         payerID: data.payerID,
         ID: data.ID

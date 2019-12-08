@@ -20,13 +20,13 @@ export class OrderService {
 
   checkUser(data) {
     return this.http.get<any>(
-      `http://localhost:3011/dni/${data}`
+      `${environment.URL_BASE}/${environment.URL_USER}/dni/${data}`
     )
   }
 
   createUser(data) {
     return this.http.post<any>(
-      `http://localhost:3011/`,
+      `${environment.URL_BASE}/${environment.URL_USER}/`,
       {
         "first_name": data.firstName,
         "last_name": data.lastName,
@@ -42,7 +42,7 @@ export class OrderService {
       {
         "id_table": data.id_table,
         "order": data.order,
-        "id_user": data.id_user,
+        "id_client": data.id_client,
         "total": data.total
       })
   }
