@@ -26,12 +26,12 @@ export class OrderService {
 
   createUser(data) {
     return this.http.post<any>(
-      `${environment.URL_BASE}/${environment.URL_USER}`,
+      `http://localhost:3011/`,
       {
-        "first_name": data.first_name,
-        "last_name": data.last_name,
+        "first_name": data.firstName,
+        "last_name": data.lastName,
         "email": data.email,
-        "dni": data.email,
+        "dni": data.dni,
         "address": data.address
       })
   }

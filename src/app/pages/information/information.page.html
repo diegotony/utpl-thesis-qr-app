@@ -1,10 +1,8 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-title>Information</ion-title>
   </ion-toolbar>
 </ion-header>
-
-
 
 <ion-content>
   <form #form="ngForm" (ngSubmit)="register(form)">
@@ -25,11 +23,6 @@
       </ion-label>
       <ion-input type="number" name="dni" ngModel required></ion-input>
     </ion-item>
-    <!-- <ion-item>
-      <ion-label>Ingrese Su fecha de Nacimiento </ion-label>
-      <ion-datetime name="date" displayFormat="MMM D, YYYY" min="1970" max="2001" value="1990-09-02" ngModel required>
-      </ion-datetime>
-    </ion-item> -->
     <ion-item>
       <ion-label>Desea recibir su factura ?</ion-label>
       <ion-checkbox name="billing" ngModel required></ion-checkbox>
@@ -37,5 +30,35 @@
     </ion-item>
 
     <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Crear Orden</ion-button>
+  </form>
+</ion-content> -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registration</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="todo" (ngSubmit)="logForm()">
+    <ion-item>
+      <ion-input placeholder="Ingresa tu nombre" required type="text" formControlName="firstName"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-input placeholder="Ingresa tu apelllido" required type="text" formControlName="lastName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input placeholder="Ingresa tu email" required type="email" formControlName="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input placeholder="Ingresa tu direccion" required type="text" formControlName="address"></ion-input>
+    </ion-item>
+    <ion-item class="ion-item-right-margin">
+      <ion-input placeholder="Ingresa tu cedula" required type="text" formControlName="dni"></ion-input>
+    </ion-item>
+
+    <ion-button size="large" type="submit" slot="end" [disabled]="!todo.valid">Submit</ion-button>
   </form>
 </ion-content>
