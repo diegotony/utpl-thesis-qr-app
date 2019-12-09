@@ -9,29 +9,24 @@ import { NavController } from '@ionic/angular';
 })
 export class CarritoPage implements OnInit {
 
-  constructor(public navExtras: ExtrasService,  public nav: NavController) { }
-  order =[];
-  table:any;
+  constructor(public navExtras: ExtrasService, public nav: NavController) { }
+  order = [];
+  table: any;
 
   ngOnInit() {
     this.order = this.navExtras.getOrder()
     this.table = this.navExtras.getTable()
   }
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     this.order = this.navExtras.getOrder()
   }
 
-async delete(item){
-  this.order.splice(this.order.indexOf(item),1)
-}
-async createOrder(){
-  // for (let index = 0; index < this.order.length; index++) {
-  //   const element = this.order[index];
-  //   console.log(element.amount)
-    
-  // }
-  this.nav.navigateForward("users")
-}
-
+  async delete(item) {
+    this.order.splice(this.order.indexOf(item), 1)
+  }
+  async createOrder() {
+    this.navExtras.setTable("5de5faad8e17a07c2efaad97")
+    this.nav.navigateForward("users")
+  }
 
 }

@@ -48,12 +48,15 @@ export class InformationPage implements OnInit {
   logForm() {
     console.log(this.todo.value)
     this.orderService.createUser(this.todo.value)
-      .subscribe((data) => {
-        this.navExtras.setClient(data._id)
+      .subscribe((user) => {
+        console.log("--------USER-----------")
+        console.log(user)
+        this.navExtras.setClient(user._id)
         this.order = this.navExtras.getOrder()
         this.order.forEach((value) => {
           this.amount = this.amount + value.amount
         })
+
 
         let client = this.navExtras.getClient()
         let order = this.navExtras.getOrder()
@@ -65,10 +68,11 @@ export class InformationPage implements OnInit {
           "order": order,
           "pago": "Pendiente",
           "total": total
-        }).subscribe((data) => {
+        }).subscribe((order) => {
+          console.log("--------ORDER-----------")
+          console.log(order)
           this.navExtras.setTotal(total)
-          this.navExtras.setIdOrder(data._id)
-          console.log(data['_id'])
+          this.navExtras.setIdOrder(order._id)
           this.nav.navigateForward("payment")
         })
 

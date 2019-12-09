@@ -23,27 +23,31 @@ export class PaymentPage implements AfterViewChecked {
   paypalLoad: boolean = true;
 
   finalAmount: number = 1;
-
+  id_payment_return=""
   paypalConfig = {
     env: 'sandbox',
     commit: true,
     payment: (data, actions) => {
-      return actions.request.post(environment.URL_BASE + "/" + environment.URL_PAY + '/paypal/create', {
+      console.log(this.navExtras.getTotal())
+      console.log(this.navExtras.getIdOrder())
+      console.log(this.navExtras.getClient())
+      return actions.request.post(environment.URL_BASE+"/"+environment.URL_PAY+'/paypal/create', {
         total: this.navExtras.getTotal(),
         id_order: this.navExtras.getIdOrder(),
         id_client: this.navExtras.getClient(),
         payType: "Paypal"
       })
-        .then(function (res) {
-          // 3. Return res.id from the response
+        .then((res) =>{
+          // console.log(res)
+          this.id_payment_return= res.id_payment;
           return res.paymentID;
         });
     },
     onAuthorize: (data, actions) => {
-      return actions.request.post(environment.URL_BASE + "/" + environment.URL_PAY + '/paypal/execute', {
+      return actions.request.post(environment.URL_BASE+"/"+environment.URL_PAY+'/paypal/execute', {
         paymentID: data.paymentID,
         payerID: data.payerID,
-        ID: data.ID
+        id_payment: this.id_payment_return
       })
         .then((res) => {
           this.nav.navigateForward("qr")

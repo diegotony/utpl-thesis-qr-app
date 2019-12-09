@@ -26,7 +26,7 @@ export class OrderService {
 
   createUser(data) {
     return this.http.post<any>(
-      `${environment.URL_BASE}/${environment.URL_USER}/`,
+      `${environment.URL_BASE}/${environment.URL_USER}`,
       {
         "first_name": data.firstName,
         "last_name": data.lastName,
