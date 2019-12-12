@@ -33,11 +33,12 @@ export class CheckUsersPage implements OnInit {
         })
 
         let client = this.navExtras.getClient()
+        console.log(client)
         let order = this.navExtras.getOrder()
         let table = this.navExtras.getTable()
         let total = this.amount
         this.orderService.createOrder({
-          "id_user": client,
+          "id_client": client,
           "id_table": table,
           "order": order,
           "pago": "Pendiente",

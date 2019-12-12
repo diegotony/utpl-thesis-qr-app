@@ -38,7 +38,7 @@ export class PaymentPage implements AfterViewChecked {
         payType: "Paypal"
       })
         .then((res) =>{
-          // console.log(res)
+          console.log(res)
           this.id_payment_return= res.id_payment;
           return res.paymentID;
         });
